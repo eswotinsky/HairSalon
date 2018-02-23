@@ -25,5 +25,9 @@ namespace HairSalon.Models
         {
             return _id;
         }
+
+        public static void DeleteAll()
+        {
+        }
     }
 }

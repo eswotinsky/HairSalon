@@ -6,21 +6,21 @@ using HairSalon.Models;
 namespace HairSalon.Tests
 {
     [TestClass]
-    public class ClientTests
+    public class StylistTests
     {
 
-        public ClientTests()
+        public StylistTests()
         {
             DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=eric_swotinsky_test;";
         }
 
         [TestMethod]
-        public void GetName_ReturnsClientName_String()
+        public void GetName_ReturnsStylistName_String()
         {
             string testName = "Bob";
-            Client testClient = new Client(testName, 1);
+            Stylist testStylist = new Stylist(testName);
 
-            string result = testClient.GetName();
+            string result = testStylist.GetName();
 
             Assert.AreEqual(testName, result);
         }

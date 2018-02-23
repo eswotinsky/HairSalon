@@ -11,9 +11,10 @@ namespace HairSalon.Models
         private int _stylistId;
         private int _id;
 
-        public Client(string name, int id = 0)
+        public Client(string name, int stylistId, int id = 0)
         {
             _name = name;
+            _stylistId = stylistId;
             _id = id;
         }
 
@@ -30,6 +31,10 @@ namespace HairSalon.Models
         public int GetId()
         {
             return _id;
+        }
+
+        public static void DeleteAll()
+        {
         }
     }
 }
