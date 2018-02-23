@@ -65,14 +65,13 @@ namespace HairSalon.Models
             {
                 conn.Dispose();
             }
-
         }
 
         // public List<Client> GetClients()
         // {
         //     //return list of clients associated with the stylist
         // }
-        //
+
         public static List<Stylist> GetAll()
         {
              List<Stylist> allStylists = new List<Stylist> {};
@@ -95,9 +94,6 @@ namespace HairSalon.Models
                conn.Dispose();
              }
              return allStylists;
-
-            // List<Stylist> result = new List<Stylist>{};
-            // return result;
         }
 
         public static void DeleteAll()
