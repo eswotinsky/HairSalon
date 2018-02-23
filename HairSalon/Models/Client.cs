@@ -33,8 +33,32 @@ namespace HairSalon.Models
             return _id;
         }
 
+        public void Save()
+        {
+            //save Client to database
+        }
+
+        // public static List<Client> GetAll()
+        // {
+        //     //pull all clients from database, return as List<Client>
+        // }
+
         public static void DeleteAll()
         {
+            //warn user first?
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"DELETE FROM clients;";
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
         }
     }
 }

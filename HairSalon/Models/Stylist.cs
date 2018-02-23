@@ -16,6 +16,11 @@ namespace HairSalon.Models
             _id = id;
         }
 
+        public override int GetHashCode()
+        {
+          return this.GetId().GetHashCode();
+        }
+
         public string GetName()
         {
             return _name;
@@ -26,8 +31,38 @@ namespace HairSalon.Models
             return _id;
         }
 
+        public void Save()
+        {
+            //save Stylist to database
+        }
+
+        // public List<Client> GetClients()
+        // {
+        //     //return list of clients associated with the stylist
+        // }
+        //
+        public static List<Stylist> GetAll()
+        {
+            List<Stylist> result = new List<Stylist>{};
+            return result;
+        }
+
         public static void DeleteAll()
         {
+            //warn user first?
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"DELETE FROM stylists;";
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
         }
     }
 }

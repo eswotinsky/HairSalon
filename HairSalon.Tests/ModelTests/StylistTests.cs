@@ -25,5 +25,19 @@ namespace HairSalon.Tests
             Assert.AreEqual(testName, result);
         }
 
+        [TestMethod]
+        public void Save_SavesStylistToDatabase_StylistList()
+        {
+            Stylist testStylist = new Stylist("Cindy");
+            testStylist.Save();
+
+            List<Stylist> result = Stylist.GetAll();
+            List<Stylist> testList = new List<Stylist>{testStylist};
+
+            CollectionAssert.AreEqual(testList, result);
+        }
+
+
+
     }
 }
