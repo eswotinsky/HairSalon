@@ -80,10 +80,19 @@ namespace HairSalon.Tests
 
             List<Client> testClientList = new List<Client> {newClient01, newClient02};
             List<Client> resultClientList = testStylist.GetClients();
-            Console.WriteLine(testClientList.Count);
-            Console.WriteLine(resultClientList.Count);
 
             CollectionAssert.AreEqual(testClientList, resultClientList);
+        }
+
+        [TestMethod]
+        public void Find_FindsStylistInDatabase_Stylist()
+        {
+            Stylist testStylist = new Stylist("Cindy");
+            testStylist.Save();
+
+            Stylist foundStylist = Stylist.Find(testStylist.GetId());
+
+            Assert.AreEqual(testStylist, foundStylist);
         }
     }
 }
