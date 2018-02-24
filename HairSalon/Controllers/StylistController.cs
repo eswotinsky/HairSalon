@@ -14,11 +14,11 @@ namespace HairSalon.Controllers
             return View();
         }
 
-        // [HttpGet("/stylist/{id}")]
-        // public ActionResult Details()
-        // {
-        //     Stylist myStylist = Stylist.Find(id); //need Find method
-        //     return View(myStylist);
-        // }
+        [HttpGet("/stylist/{id}")]
+        public ActionResult Details(int id)
+        {
+            Stylist myStylist = Stylist.Find(id);
+            return View(myStylist);
+        }
     }
 }
