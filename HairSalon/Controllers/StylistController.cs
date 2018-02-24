@@ -27,5 +27,14 @@ namespace HairSalon.Controllers
             Stylist.DeleteAll();
             return View("DeleteAll");
         }
+
+        [HttpPost("/stylist/create")]
+        public ActionResult Create()
+        {
+            string formName = Request.Form["new-stylist-name"];
+            Stylist newStylist = new Stylist(formName);
+            newStylist.Save();
+            return View("Details", newStylist);
+        }
     }
 }
