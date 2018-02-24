@@ -1,3 +1,18 @@
 @{
     Layout = "_Layout";
 }
+
+<div class="container">
+    <h1>Epicodus Hair Salon</h1>
+
+    <h3>Select a stylist:</h3>
+    <ul>
+        @foreach(var stylist in Model)
+        {
+            <li><a href="/stylist/@stylist.GetId()">@stylist.GetName()</a></li>
+        }
+
+        <hr>
+        <a href="/stylist/new">Add a new stylist</a>
+    </ul>
+</div>
