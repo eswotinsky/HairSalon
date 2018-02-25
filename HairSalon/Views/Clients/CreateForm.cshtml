@@ -9,6 +9,7 @@
         <div class="form-group">
             <label for="new-client-name">Enter client's name:</label>
             <input type="text" name="new-client-name">
+            <input type="hidden" name="stylistId" value="@Model.GetId()">
         </div>
 
         <button type="submit" class="btn btn-success">Submit</button>

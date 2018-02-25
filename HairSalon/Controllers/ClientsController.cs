@@ -15,5 +15,15 @@ namespace HairSalon.Controllers
             Stylist myStylist = Stylist.Find(stylistId);
             return View(myStylist);
         }
+
+        [HttpPost("/client/create")]
+        public ActionResult Create()
+        {
+            string formName = Request.Form["new-client-name"];
+            int stylistId = Int32.Parse(Request.Form["stylistId"]);
+            Client newClient = new Client(formName, stylistId);
+            newClient.Save();
+            return RedirectToAction("Details", "Stylists", new {id=stylistId});
+        }
     }
 }
