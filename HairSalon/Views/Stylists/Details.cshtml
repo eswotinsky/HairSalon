@@ -1,0 +1,25 @@
+@{
+    Layout = "_Layout";
+}
+<div class="container">
+    <h1>@Model.GetName()</h1>
+    <hr>
+    <h4><strong>Clients:</strong></h4>
+    @if (Model.GetClients().Count == 0)
+    {
+        <p><em>No clients found.</em></p>
+    }
+    else
+    {
+    <ul>
+        @foreach (var client in Model.GetClients())
+        {
+            <li>@client.GetName()</li>
+        }
+    </ul>
+    }
+    @* add link *@
+    <button type="button" class="btn btn-success"><a href="">Add a new client:</a></button>
+
+    <button type="button" class="btn btn-info"><a href="/">View all stylists</a></button>
+</div>
