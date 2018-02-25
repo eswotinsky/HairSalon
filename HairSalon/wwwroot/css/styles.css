@@ -1,0 +1,8 @@
+form.delete-stylist {
+    display: inline-block;
+    float: right;
+}
+
+.btn-warning {
+    padding: 0px 12px;
+}
