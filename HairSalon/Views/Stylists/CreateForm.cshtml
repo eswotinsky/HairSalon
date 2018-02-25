@@ -4,12 +4,14 @@
 
 <div class="container">
     <h3>Add a new stylist:</h3>
-    <form action="/stylist/create" method="post">
-        <label for="new-stylist-name">Enter Stylist's Name:</label>
-        <input type="text" name="new-stylist-name">
+    <form class="form-inline" action="/stylist/create" method="post">
+        <div class="form-group">
+            <label for="new-stylist-name">Enter stylist's name:</label>
+            <input type="text" name="new-stylist-name">
+        </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit" class="btn btn-success">Submit</button>
     </form>
 
-    <button type="button"><a href="/">View all stylists</a></button>
+    <button type="button" class="btn btn-info"><a href="/">View all stylists</a></button>
 </div>

@@ -8,7 +8,7 @@ namespace HairSalon.Controllers
 {
     public class StylistsController : Controller
     {
-        [HttpGet("/stylist/new")]
+        [HttpGet("/stylist/add")]
         public ActionResult CreateForm()
         {
             return View();
