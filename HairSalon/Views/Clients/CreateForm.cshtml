@@ -3,9 +3,9 @@
 }
 
 <div class="container">
-    <h3>Add a new client:</h3>
+    <h3>Add New Client</h3>
     <form class="form-inline" action="/client/create/" method="post">
-        <p>Adding a new client for @Model.GetName():</p>
+        <p>Adding a new client for <strong>@Model.GetName():</strong></p>
         <div class="form-group">
             <label for="new-client-name">Enter client's name:</label>
             <input type="text" name="new-client-name">
@@ -14,7 +14,7 @@
 
         <button type="submit" class="btn btn-success">Submit</button>
     </form>
-
-    <button type="button" class="btn btn-warning"><a href="/stylist/@Model.GetId()">Back to @Model.GetName()'s page</a></button>
+    <hr>
+    <button type="button" class="btn btn-primary"><a href="/stylist/@Model.GetId()">Back to @Model.GetName()'s page</a></button>
     <button type="button" class="btn btn-info"><a href="/">View all stylists</a></button>
 </div>

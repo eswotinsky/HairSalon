@@ -1,3 +1,8 @@
+body {
+    background: url("../img/kareya-saleh.jpg") no-repeat;
+    background-size: 100%;
+}
+
 form.delete-stylist {
     display: inline-block;
     float: right;
@@ -5,4 +10,9 @@ form.delete-stylist {
 
 .btn-warning {
     padding: 0px 12px;
+}
+
+.btn a
+{
+    color: white;
 }
