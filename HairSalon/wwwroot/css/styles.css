@@ -16,3 +16,11 @@ form.delete-stylist {
 {
     color: white;
 }
+
+a {
+  color: gold;
+}
+
+.list-group-item {
+    background: rgba(50, 100, 100, 0.5);
+}

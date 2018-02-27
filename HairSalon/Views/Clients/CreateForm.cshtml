@@ -1,20 +1,24 @@
 @{
-    Layout = "_Layout";
+  Layout = "_Layout";
 }
-
 <div class="container">
-    <h3>Add New Client</h3>
-    <form class="form-inline" action="/client/create/" method="post">
-        <p>Adding a new client for <strong>@Model.GetName():</strong></p>
-        <div class="form-group">
-            <label for="new-client-name">Enter client's name:</label>
-            <input type="text" name="new-client-name">
-            <input type="hidden" name="stylistId" value="@Model.GetId()">
-        </div>
-
-        <button type="submit" class="btn btn-success">Submit</button>
-    </form>
+<div class="row">
+  <div class="col-md-8">
+    <h1>Epicodus Hair Salon</h1>
     <hr>
-    <button type="button" class="btn btn-primary"><a href="/stylist/@Model.GetId()">Back to @Model.GetName()'s page</a></button>
-    <button type="button" class="btn btn-info"><a href="/">View all stylists</a></button>
+  <h3>Add New Client</h3>
+  <form class="form-inline" action="/client/create/" method="post">
+    <p>Adding a new client for <strong>@Model.GetName():</strong></p>
+    <div class="form-group">
+      <label for="new-client-name">Enter client's name:</label>
+      <input type="text" name="new-client-name">
+      <input type="hidden" name="stylistId" value="@Model.GetId()">
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+  <hr>
+  <button type="button" class="btn btn-primary"><a href="/stylist/@Model.GetId()">Back to @Model.GetName()'s page</a></button>
+  <button type="button" class="btn btn-info"><a href="/">View all stylists</a></button>
+</div>
+</div>
 </div>

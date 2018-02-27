@@ -1,30 +1,24 @@
 @{
-    Layout = "_Layout";
+  Layout = "_Layout";
 }
-
 <div class="container">
-    <h1>Epicodus Hair Salon</h1>
-
-    <h3>Select a stylist:</h3>
-    <div class="row">
-        <div class="col-md-8">
-
-            <ul class="list-group">
-                @foreach(var stylist in Model)
-                {
-                    <li class="list-group-item"><a href="/stylist/@stylist.GetId()">@stylist.GetName()</a><form class="delete-stylist" action="/stylist/@stylist.GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete</button></form></li>
-                }
-
-                <hr>
-                <button class="btn btn-success" type="button"><a href="/stylist/add">Add a new stylist</a></button>
-                <hr>
-                <form action="/stylist/delete-all" method="post">
-                    <button class="btn btn-danger" type="submit">Delete all stylists</button>
-                </form>
-            </ul>
-        </div>
-
+  <div class="row">
+    <div class="col-md-8">
+      <h1>Epicodus Hair Salon</h1>
+      <hr>
+      <h3>Select a stylist:</h3>
+      <ul class="list-group">
+        @foreach(var stylist in Model)
+        {
+          <li class="list-group-item"><a href="/stylist/@stylist.GetId()">@stylist.GetName()</a><form class="delete-stylist" action="/stylist/@stylist.GetId()/delete" method="post"><button type="submit" class="btn btn-warning">Delete</button></form></li>
+        }
+        <hr>
+        <button class="btn btn-success" type="button"><a href="/stylist/add">Add a new stylist</a></button>
+        <hr>
+        <form action="/stylist/delete-all" method="post">
+          <button class="btn btn-danger" type="submit">Delete all stylists</button>
+        </form>
+      </ul>
     </div>
-
-
+  </div>
 </div>

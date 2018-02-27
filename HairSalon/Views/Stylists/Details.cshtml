@@ -2,25 +2,26 @@
   Layout = "_Layout";
 }
 <div class="container">
-  <h1>@Model.GetName()</h1>
-  <hr>
-  <h4><strong>Clients:</strong></h4>
   <div class="row">
     <div class="col-md-8">
+      <h1>Epicodus Hair Salon</h1>
+      <hr>
+      <h3>@Model.GetName()'s clients:</h3>
       @if (Model.GetClients().Count == 0)
       {
         <p><em>No clients found.</em></p>
       }
       else
       {
-        <ul class="list-group">
-          @foreach (var client in Model.GetClients())
-          {
-            <li class="list-group-item">@client.GetName()</li>
-          }
-        </ul>
+        <div class="translucent">
+          <ul class="list-group">
+            @foreach (var client in Model.GetClients())
+            {
+              <li class="list-group-item">@client.GetName()</li>
+            }
+          </ul>
+        </div>
       }
-      @* add link *@
       <button type="button" class="btn btn-success"><a href="/client/add/@Model.GetId()">Add a new client</a></button>
       <button type="button" class="btn btn-info"><a href="/">View all stylists</a></button>
     </div>
