@@ -98,19 +98,70 @@ namespace HairSalon.Models
                 conn.Dispose();
             }
             return allMyClients;
-
         }
 
         public void AddSpecialty(Specialty newSpecialty)
         {
-            //add new specialty association to database
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"INSERT INTO stylists_specialties (stylist_id, specialty_id) VALUES (@stylistId, @specialtyId);";
+
+            MySqlParameter stylistId = new MySqlParameter();
+            stylistId.ParameterName = "@stylistId";
+            stylistId.Value = _id;
+            cmd.Parameters.Add(stylistId);
+
+            MySqlParameter specialtyId = new MySqlParameter();
+            specialtyId.ParameterName = "@specialtyId";
+            specialtyId.Value = newSpecialty.GetId();
+            cmd.Parameters.Add(specialtyId);
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
         }
 
         public List<Specialty> GetSpecialties()
         {
-            //get this stylist's specialties from database
-            List<Specialty> mySpecialties = new List<Specialty>{};
-            return mySpecialties;
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT specialties.* FROM stylists
+            JOIN stylists_specialties ON (stylists.id = stylists_specialties.stylist_id)
+            JOIN specialties ON (stylists_specialties.specialty_id = specialties.id)
+            WHERE stylists.id = @StylistId;";
+
+
+            MySqlParameter stylistId = new MySqlParameter();
+            stylistId.ParameterName = "@StylistId";
+            stylistId.Value = _id;
+            cmd.Parameters.Add(stylistId);
+
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            List<Specialty> specialties = new List<Specialty>{};
+
+            while(rdr.Read())
+            {
+                int specialtyId = rdr.GetInt32(0);
+                string specialtyName = rdr.GetString(1);
+                Specialty newSpecialty = new Specialty(specialtyName, specialtyId);
+                specialties.Add(newSpecialty);
+            }
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+
+            return specialties;
         }
 
         public static List<Stylist> GetAll()

@@ -46,7 +46,25 @@ namespace HairSalon.Models
 
         public void Save()
         {
-            //save to database
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"INSERT INTO specialties (name) VALUES (@name);";
+
+            MySqlParameter name = new MySqlParameter();
+            name.ParameterName = "@name";
+            name.Value = this._name;
+            cmd.Parameters.Add(name);
+
+            cmd.ExecuteNonQuery();
+            _id = (int) cmd.LastInsertedId;
+            conn.Close();
+
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
         }
 
         public void Delete()
@@ -56,21 +74,77 @@ namespace HairSalon.Models
 
         public static void DeleteAll()
         {
-            //delete all specialties from database
-        }
+            //warn user first?
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
 
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"DELETE FROM specialties;";
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
         public static Specialty Find(int id)
         {
-            //find from database
-            Specialty mySpecialty = new Specialty("test");
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM specialties WHERE id = @searchId;";
+
+            MySqlParameter searchId = new MySqlParameter();
+            searchId.ParameterName = "@searchId";
+            searchId.Value = id;
+            cmd.Parameters.Add(searchId);
+
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+            int specialtyId = 0;
+            string specialtyName = "";
+
+            while (rdr.Read())
+            {
+                specialtyId = rdr.GetInt32(0);
+                specialtyName = rdr.GetString(1);
+            }
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+
+            Specialty mySpecialty = new Specialty(specialtyName, specialtyId);
             return mySpecialty;
         }
 
         public static List<Specialty> GetAll()
         {
-            //get from database
-            List<Specialty> allSpecialties = new List<Specialty>{};
-            return allSpecialties;
+             List<Specialty> allSpecialties = new List<Specialty> {};
+             MySqlConnection conn = DB.Connection();
+
+             conn.Open();
+             var cmd = conn.CreateCommand() as MySqlCommand;
+             cmd.CommandText = @"SELECT * FROM specialties;";
+             var rdr = cmd.ExecuteReader() as MySqlDataReader;
+             while(rdr.Read())
+             {
+               int specialtyId = rdr.GetInt32(0);
+               string specialtyName = rdr.GetString(1);
+               Specialty newSpecialty = new Specialty(specialtyName, specialtyId);
+               allSpecialties.Add(newSpecialty);
+             }
+             conn.Close();
+             if (conn != null)
+             {
+               conn.Dispose();
+             }
+             return allSpecialties;
         }
 
         public void AddStylist(Stylist newStylist)
@@ -80,7 +154,7 @@ namespace HairSalon.Models
 
         public static List<Stylist> GetStylists()
         {
-            //get all stylists with this specialty from database
+            //return all stylists paired with this specialty's id in join table
             List<Stylist> myStylists = new List<Stylist>{};
             return myStylists;
         }
