@@ -6,7 +6,7 @@
     <div class="col-md-8">
       <h1>Epicodus Hair Salon</h1>
       <hr>
-      <h3>@Model.GetName()'s clients:</h3>
+      <h3>@Model.GetName() 's clients:</h3>
       @if (Model.GetClients().Count == 0)
       {
         <p><em>No clients found.</em></p>
@@ -16,8 +16,9 @@
         <div class="translucent">
           <ul class="list-group">
             @foreach (var client in Model.GetClients())
+            /* button does not yet work */
             {
-              <li class="list-group-item">@client.GetName()</li>
+              <li class="list-group-item">@client.GetName()<form class="delete-stylist" action="" method="post"><button type="submit" class="btn btn-warning">Delete</button></li>
             }
           </ul>
         </div>

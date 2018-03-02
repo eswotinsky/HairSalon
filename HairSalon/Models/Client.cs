@@ -79,6 +79,38 @@ namespace HairSalon.Models
             }
         }
 
+        public static Client Find(int id)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM clients WHERE id=@id;";
+
+            MySqlParameter myClientId = new MySqlParameter("@id", id);
+            cmd.Parameters.Add(myClientId);
+
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+            string clientName = "";
+            int clientStylistId = 0;
+
+            while (rdr.Read())
+            {
+                clientName = rdr.GetString(1);
+                clientStylistId = rdr.GetInt32(2);
+            }
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+
+            Client myClient = new Client(clientName, clientStylistId);
+            return myClient;
+        }
+
         public static List<Client> GetAll()
         {
              List<Client> allClients = new List<Client> {};
@@ -102,6 +134,28 @@ namespace HairSalon.Models
                conn.Dispose();
              }
              return allClients;
+        }
+
+        public void Delete()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"DELETE FROM clients WHERE id = @thisId;";
+
+            MySqlParameter searchId = new MySqlParameter();
+            searchId.ParameterName = "@thisId";
+            searchId.Value = _id;
+            cmd.Parameters.Add(searchId);
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
         }
 
         public static void DeleteAll()
