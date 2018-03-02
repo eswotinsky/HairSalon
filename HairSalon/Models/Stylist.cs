@@ -99,7 +99,19 @@ namespace HairSalon.Models
             }
             return allMyClients;
 
-   }
+        }
+
+        public void AddSpecialty(Specialty newSpecialty)
+        {
+            //add new specialty association to database
+        }
+
+        public List<Specialty> GetSpecialties()
+        {
+            //get this stylist's specialties from database
+            List<Specialty> mySpecialties = new List<Specialty>{};
+            return mySpecialties;
+        }
 
         public static List<Stylist> GetAll()
         {
