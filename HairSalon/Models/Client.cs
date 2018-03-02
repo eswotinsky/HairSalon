@@ -92,11 +92,13 @@ namespace HairSalon.Models
 
             MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
 
+            int clientId = 0;
             string clientName = "";
             int clientStylistId = 0;
 
             while (rdr.Read())
             {
+                clientId = rdr.GetInt32(0);
                 clientName = rdr.GetString(1);
                 clientStylistId = rdr.GetInt32(2);
             }
@@ -107,7 +109,7 @@ namespace HairSalon.Models
                 conn.Dispose();
             }
 
-            Client myClient = new Client(clientName, clientStylistId);
+            Client myClient = new Client(clientName, clientStylistId, clientId);
             return myClient;
         }
 

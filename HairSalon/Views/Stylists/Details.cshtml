@@ -18,7 +18,7 @@
             @foreach (var client in Model.GetClients())
             /* button does not yet work */
             {
-              <li class="list-group-item">@client.GetName()<form class="delete-stylist" action="" method="post"><button type="submit" class="btn btn-warning">Delete</button></li>
+              <li class="list-group-item">@client.GetName()<form class="delete-stylist" action="/client/delete/@client.GetId()/@Model.GetId()" method="post"><button type="submit" class="btn btn-warning">Delete</button></li>
             }
           </ul>
         </div>
