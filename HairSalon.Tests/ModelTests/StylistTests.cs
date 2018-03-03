@@ -112,5 +112,18 @@ namespace HairSalon.Tests
 
             CollectionAssert.AreEqual(testList, result);
         }
+
+        [TestMethod]
+        public void Edit_ChangesStylistName_Stylist()
+        {
+            Stylist testStylist = new Stylist("Cindy");
+            testStylist.Save();
+
+            string newName = "Sarah";
+            testStylist.Edit(newName);
+            Stylist foundStylist = Stylist.Find(testStylist.GetId());
+
+            Assert.AreEqual(newName, foundStylist.GetName());
+        }
     }
 }

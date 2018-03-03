@@ -236,7 +236,7 @@ namespace HairSalon.Models
                 conn.Dispose();
             }
 
-            Stylist myStylist = new Stylist(stylistName, id);
+            Stylist myStylist = new Stylist(stylistName, stylistId);
             return myStylist;
         }
 
