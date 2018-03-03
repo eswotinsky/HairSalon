@@ -24,3 +24,9 @@ a {
 .list-group-item {
     background: rgba(50, 100, 100, 0.5);
 }
+
+h3 {
+    color: yellow;
+    text-align: center;
+    background: rgba(100, 150, 150, 1);
+}

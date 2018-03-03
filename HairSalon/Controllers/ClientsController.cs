@@ -29,12 +29,16 @@ namespace HairSalon.Controllers
         [HttpPost("/client/delete/{clientId}/{stylistId}")]
         public ActionResult Delete(int clientId, int stylistId)
         {
-            Console.WriteLine(clientId);
             Client myClient = Client.Find(clientId);
-            Console.WriteLine(myClient.GetName());
-            Console.WriteLine(myClient.GetId());
             myClient.Delete();
             return RedirectToAction("Details", "Stylists", new {id=stylistId});
+        }
+
+        [HttpGet("/client/{id}")]
+        public ActionResult Details(int id)
+        {
+            Client myClient = Client.Find(id);
+            return View(myClient);
         }
     }
 }
