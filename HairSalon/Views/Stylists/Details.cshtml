@@ -7,23 +7,33 @@
   <div class="row">
     <div class="col-md-6">
       <h3>@Model.GetName() 's clients:</h3>
+
       @if (Model.GetClients().Count == 0)
       {
         <p><em>No clients found.</em></p>
       }
       else
       {
-        <div class="translucent">
           <ul class="list-group">
             @foreach (var client in Model.GetClients())
             {
               <li class="list-group-item"><a href="/client/@client.GetId()">@client.GetName()</a><form class="delete-stylist" action="/client/delete/@client.GetId()/@Model.GetId()" method="post"><button type="submit" class="btn btn-warning">Delete</button></li>
             }
           </ul>
-        </div>
       }
+      <div class="view-details">
+      <hr>
+      <h4>Edit stylist:</h4>
+      <form class="" action="/stylist/update/@Model.GetId()" method="post">
+            <div class="form-group">
+                <label for="new-stylist-name">Name</label>
+                <input type="text" name="new-stylist-name" value="@Model.GetName()">
+            </div>
+            <button type="submit">Submit Changes</button>
+        </form>
       <button type="button" class="btn btn-success"><a href="/client/add/@Model.GetId()">Add a new client</a></button>
       <button type="button" class="btn btn-info"><a href="/">View all stylists</a></button>
+    </div>
     </div>
   </div>
 </div>
