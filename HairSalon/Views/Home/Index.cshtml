@@ -39,4 +39,16 @@
       </form>
     </div>
   </div>
+  <div class="row">
+      <div class="col-md-12">
+          <h3>Select a specialty:</h3>
+          <ul class="list-group">
+            @foreach(var specialty in Specialty.GetAll())
+            {
+              <li class="list-group-item"><a href="/specialty/@specialty.GetId()">@specialty.GetName()</a></li>
+            }
+          </ul>
+          <button class="btn btn-success" type="button"><a href="/specialty/add">Add a new specialty</a></button>
+      </div>
+  </div>
 </div>

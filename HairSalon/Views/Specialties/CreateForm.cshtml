@@ -1,1 +1,17 @@
-@* add a new specialty here *@
+@{
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <h3>Add New Specialty</h3>
+    <form class="form-inline" action="/specialty/create" method="post">
+        <div class="form-group">
+            <label for="new-specialty-name">Enter specialty:</label>
+            <input type="text" name="new-specialty-name">
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+    <hr>
+    <button type="button" class="btn btn-info"><a href="/">Back to home</a></button>
+</div>
