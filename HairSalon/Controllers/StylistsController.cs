@@ -22,10 +22,10 @@ namespace HairSalon.Controllers
         }
 
         [HttpPost("/stylist/delete-all")]
-        public ActionResult Delete()
+        public ActionResult DeleteAll()
         {
             Stylist.DeleteAll();
-            return View("DeleteAll");
+            return View();
         }
 
         [HttpPost("/stylist/create")]
