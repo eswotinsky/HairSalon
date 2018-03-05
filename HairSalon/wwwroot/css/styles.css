@@ -3,7 +3,7 @@ body {
     background-size: 100%;
 }
 
-form.delete-stylist {
+form.delete-one {
     display: inline-block;
     float: right;
 }

@@ -8,7 +8,7 @@ namespace HairSalon.Controllers
 {
     public class ClientsController : Controller
     {
-    
+
         [HttpGet("/client/add/{stylistId}")]
         public ActionResult CreateForm(int stylistId)
         {
@@ -32,6 +32,14 @@ namespace HairSalon.Controllers
             Client myClient = Client.Find(clientId);
             myClient.Delete();
             return RedirectToAction("Details", "Stylists", new {id=stylistId});
+        }
+
+        [HttpPost("/client/delete/{clientId}")]
+        public ActionResult Delete(int clientId)
+        {
+            Client myClient = Client.Find(clientId);
+            myClient.Delete();
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost("/client/delete-all")]

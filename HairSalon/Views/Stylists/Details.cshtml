@@ -17,7 +17,7 @@
           <ul class="list-group">
             @foreach (var client in Model.GetClients())
             {
-              <li class="list-group-item"><a href="/client/@client.GetId()">@client.GetName()</a><form class="delete-stylist" action="/client/delete/@client.GetId()/@Model.GetId()" method="post"><button type="submit" class="btn btn-warning">Delete</button></li>
+              <li class="list-group-item"><a href="/client/@client.GetId()">@client.GetName()</a><form class="delete-one" action="/client/delete/@client.GetId()/@Model.GetId()" method="post"><button type="submit" class="btn btn-warning">Delete</button></li>
             }
           </ul>
       }
@@ -33,7 +33,7 @@
         </form>
         <hr>
       <button type="button" class="btn btn-success"><a href="/client/add/@Model.GetId()">Add a new client</a></button>
-      <button type="button" class="btn btn-info"><a href="/">View all stylists</a></button>
+      <button type="button" class="btn btn-info"><a href="/">Back to main view</a></button>
     </div>
     </div>
   </div>
