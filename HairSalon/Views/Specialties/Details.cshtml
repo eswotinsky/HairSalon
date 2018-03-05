@@ -1,2 +1,21 @@
 @* view specialty details, incl. list of stylists with this specialty *@
-<h3>@Model.GetName()</h3>
+@{
+    Layout = "_Layout";
+}
+<div class="container">
+    <h1>Epicodus Hair Salon</h1>
+    <h3>Stylists specializing in @Model.GetName():</h3>
+    @if(@Model.GetStylists().Count == 0)
+    {
+        <p><em>None found.</em></p>
+    }
+    else
+    {
+        <ul>
+            @foreach(var specialty in @Model.GetStylists())
+            {
+                <li>@specialty.GetName()</li>
+            }
+            </ul>
+    }
+</div>

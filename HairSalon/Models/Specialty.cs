@@ -152,10 +152,33 @@ namespace HairSalon.Models
             //insert stylist_id and specialty_id pair into join table
         }
 
-        public static List<Stylist> GetStylists()
+        public List<Stylist> GetStylists()
         {
-            //return all stylists paired with this specialty's id in join table
-            List<Stylist> myStylists = new List<Stylist>{};
+            List<Stylist> myStylists = new List<Stylist>();
+
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT stylists.* FROM specialties JOIN stylists_specialties ON (specialties.id = stylists_specialties.specialty_id) JOIN stylists ON (stylists_specialties.stylist_id = stylists.id) WHERE specialties.id = @specialtyId;";
+
+            MySqlParameter specialtyId = new MySqlParameter("@specialtyId", _id);
+            cmd.Parameters.Add(specialtyId);
+
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+            while (rdr.Read())
+            {
+                int stylistId = rdr.GetInt32(0);
+                string stylistName = rdr.GetString(1);
+                Stylist myStylist = new Stylist(stylistName, stylistId);
+                myStylists.Add(myStylist);
+            }
+            conn.Close();
+            if (conn != null)
+            {
+              conn.Dispose();
+            }
+
             return myStylists;
         }
     }

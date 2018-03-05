@@ -8,7 +8,7 @@ namespace HairSalon.Controllers
 {
     public class ClientsController : Controller
     {
-
+    
         [HttpGet("/client/add/{stylistId}")]
         public ActionResult CreateForm(int stylistId)
         {

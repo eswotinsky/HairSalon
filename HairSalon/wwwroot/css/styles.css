@@ -34,3 +34,7 @@ h3 {
 .container {
     background: rgba(125, 150, 25, 0.5);
 }
+
+.delete-all {
+    float: right;
+}
