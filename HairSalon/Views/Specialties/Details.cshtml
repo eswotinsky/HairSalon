@@ -11,11 +11,12 @@
     }
     else
     {
-        <ul>
-            @foreach(var specialty in @Model.GetStylists())
+        <ul class="list-group">
+            @foreach(var stylist in @Model.GetStylists())
             {
-                <li>@specialty.GetName()</li>
+                <li class="list-group-item"><a href="/stylist/@stylist.GetId()">@stylist.GetName()</a></li>
             }
             </ul>
     }
+    <button type="button" class="btn btn-info"><a href="/">Back to main view</a></button>
 </div>

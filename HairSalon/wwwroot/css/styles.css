@@ -27,12 +27,13 @@ a {
 
 h3 {
     color: yellow;
+    border-radius: 25px;
     text-align: center;
-    background: rgba(100, 150, 150, 1);
+    background: rgba(100, 10, 150, 1);
 }
 
 .container {
-    background: rgba(125, 150, 25, 0.5);
+    background: rgba(185, 95, 225, 0.8);
 }
 
 .delete-all {

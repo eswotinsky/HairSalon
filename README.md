@@ -1,6 +1,6 @@
 # Hair Salon Database (C#)
 
-A web app, built with C#, that allows user to store and retrieve data about stylists in a hair salon, including each stylist's unique set of clients, using a MySql database. This project was completed to satisfy the C# Week 3 Independent Code Review at [Epicodus](https://www.epicodus.com) in Seattle, WA.
+A web app, built with C#, that allows user to store and retrieve data about stylists in a hair salon, including each stylist's unique set of clients and any specialty associations, using a MySql database. This project was completed to satisfy the C# Weeks 3/4 Independent Code Review at [Epicodus](https://www.epicodus.com) in Seattle, WA.
 
 ## Installation
 
@@ -78,6 +78,9 @@ A web app, built with C#, that allows user to store and retrieve data about styl
 
 ### Support and Contact Details
 If you encounter any bugs or would like to make suggestions regarding this project, please feel free to open an issue within the repository.
+
+**Known issues:**
+It is possible to add duplicate Stylist-Specialty associations.
 
 ### License
 
