@@ -1,3 +1,4 @@
+@using HairSalon.Models;
 @{
   Layout = "_Layout";
 }
@@ -6,7 +7,7 @@
     <hr>
   <div class="row">
     <div class="col-md-6">
-      <h3>@Model.GetName() 's clients:</h3>
+      <h3>@Model.GetName()'s clients:</h3>
 
       @if (Model.GetClients().Count == 0)
       {
@@ -21,7 +22,7 @@
             }
           </ul>
       }
-      <div class="view-details">
+
       <hr>
       <h4>Edit stylist:</h4>
       <form class="" action="/stylist/update/@Model.GetId()" method="post">
@@ -29,12 +30,27 @@
                 <label for="new-stylist-name">Name</label>
                 <input type="text" name="new-stylist-name" value="@Model.GetName()">
             </div>
+            <div class="form-group">
+                <label for="new-stylist-specialties">Specialties</label>
+                @foreach(var specialty in @Specialty.GetAll())
+                {
+                    <input type="checkbox" name="new-stylist-specialties" value="@specialty.GetId()">@specialty.GetName()
+                }
+            </div>
             <button type="submit">Submit Changes</button>
         </form>
         <hr>
       <button type="button" class="btn btn-success"><a href="/client/add/@Model.GetId()">Add a new client</a></button>
       <button type="button" class="btn btn-info"><a href="/">Back to main view</a></button>
     </div>
+    <div class="col-md-6">
+        <h3>@Model.GetName()'s specialties:</h3>
+        <ul class="list-group">
+        @foreach(var specialty in @Specialty.GetAll())
+        {
+            <li class="list-group-item"><a href="/specialty/@specialty.GetId()">@specialty.GetName()</a></li>
+        }
+    </ul>
     </div>
   </div>
 </div>

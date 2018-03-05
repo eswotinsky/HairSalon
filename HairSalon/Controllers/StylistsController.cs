@@ -49,6 +49,12 @@ namespace HairSalon.Controllers
         public ActionResult Update(int stylistId)
         {
             string name = Request.Form["new-stylist-name"];
+            string specialties = Request.Form["new-stylist-specialties"];
+            String[] specialtyIds = specialties.Split(',');
+            foreach(var specialtyId in specialtyIds)
+            {
+                Stylist.Find(stylistId).AddSpecialty(Specialty.Find(Int32.Parse(specialtyId)));
+            }
             Stylist myStylist = Stylist.Find(stylistId);
             myStylist.Edit(name);
             return RedirectToAction("Details", new {id = stylistId});
