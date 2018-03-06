@@ -20,9 +20,17 @@ A web app, built with C#, that allows user to store and retrieve data about styl
  ```
  CREATE table stylists (id serial PRIMARY KEY, name VARCHAR(255));
  ```
+ 
+ ```
+ CREATE table specialties (id serial PRIMARY KEY, name VARCHAR(255));
+ ```
 
  ```
  CREATE table clients (id serial PRIMARY KEY, name VARCHAR(255), stylist_id INT);
+ ```
+ 
+ ```
+ CREATE table stylists_specialties (id serial PRIMARY KEY, stylist_id INT, specialty_id INT);
  ```
 
 3. Optional - to allow for testing, run the following SQL commands as well:
@@ -35,12 +43,21 @@ A web app, built with C#, that allows user to store and retrieve data about styl
  USE eric_swotinsky_tests;
  ```
 
+
  ```
  CREATE table stylists (id serial PRIMARY KEY, name VARCHAR(255));
+ ```
+ 
+ ```
+ CREATE table specialties (id serial PRIMARY KEY, name VARCHAR(255));
  ```
 
  ```
  CREATE table clients (id serial PRIMARY KEY, name VARCHAR(255), stylist_id INT);
+ ```
+ 
+ ```
+ CREATE table stylists_specialties (id serial PRIMARY KEY, stylist_id INT, specialty_id INT);
  ```
 
 
