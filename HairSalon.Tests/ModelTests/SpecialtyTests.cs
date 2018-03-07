@@ -56,12 +56,6 @@ namespace HairSalon.Tests
             CollectionAssert.AreEqual(testList, result);
         }
 
-        // [TestMethod]
-        // public void Delete_DeletesSpecialtyAssociationsFromDatabase_SpecialtyList()
-        // {
-        //     //delete corresponding rows from join table
-        // }
-
         [TestMethod]
         public void Find_FindsSpecialtyInDatabase_Specialty()
         {
@@ -99,17 +93,14 @@ namespace HairSalon.Tests
         [TestMethod]
         public void GetAll_ReturnsAllSpecialties_SpecialtyList()
         {
-            string specialty1 = "Highlights";
-            string specialty2 = "Waxing";
-
-            Specialty newSpecialty1 = new Specialty(specialty1);
-            Specialty newSpecialty2 = new Specialty(specialty2);
-
+            Specialty newSpecialty1 = new Specialty("Highlights");
+            Specialty newSpecialty2 = new Specialty("Waxing");
             newSpecialty1.Save();
             newSpecialty2.Save();
 
-            List<Specialty> newList = new List<Specialty> { newSpecialty1, newSpecialty2 };
+            List<Specialty> newList = new List<Specialty> {newSpecialty1, newSpecialty2};
             List<Specialty> result = Specialty.GetAll();
+            
             CollectionAssert.AreEqual(newList, result);
         }
     }
