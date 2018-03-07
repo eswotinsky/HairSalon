@@ -50,10 +50,13 @@ namespace HairSalon.Controllers
         {
             string name = Request.Form["new-stylist-name"];
             string specialties = Request.Form["new-stylist-specialties"];
-            String[] specialtyIds = specialties.Split(',');
-            foreach(var specialtyId in specialtyIds)
+            if(specialties != null)
             {
-                Stylist.Find(stylistId).AddSpecialty(Specialty.Find(Int32.Parse(specialtyId)));
+                String[] specialtyIds = specialties.Split(',');
+                foreach(var specialtyId in specialtyIds)
+                {
+                    Stylist.Find(stylistId).AddSpecialty(Specialty.Find(Int32.Parse(specialtyId)));
+                }
             }
             Stylist myStylist = Stylist.Find(stylistId);
             myStylist.Edit(name);
