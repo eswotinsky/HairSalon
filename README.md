@@ -9,42 +9,55 @@ A web app, built with C#, that allows user to store and retrieve data about styl
 1. Clone this repository.
 2. Within a terminal running MySQL, or through the SQL command line in phpMyAdmin, run the following commands:
 
- ```CREATE DATABASE eric_swotinsky;
+ ```
+ CREATE DATABASE eric_swotinsky;
  ```
 
- ```USE eric_swotinsky;
+ ```
+ USE eric_swotinsky;
  ```
 
- ```CREATE table stylists (id serial PRIMARY KEY, name VARCHAR(255));
+ ```
+ CREATE table stylists (id serial PRIMARY KEY, name VARCHAR(255));
  ```
  
- ```CREATE table specialties (id serial PRIMARY KEY, name VARCHAR(255));
+ ```
+ CREATE table specialties (id serial PRIMARY KEY, name VARCHAR(255));
  ```
 
- ```CREATE table clients (id serial PRIMARY KEY, name VARCHAR(255), stylist_id INT);
+ ```
+ CREATE table clients (id serial PRIMARY KEY, name VARCHAR(255), stylist_id INT);
  ```
  
- ```CREATE table stylists_specialties (id serial PRIMARY KEY, stylist_id INT, specialty_id INT);
+ ```
+ CREATE table stylists_specialties (id serial PRIMARY KEY, stylist_id INT, specialty_id INT);
  ```
 
 3. Optional - to allow for testing, run the following SQL commands as well:
 
- ```CREATE DATABASE eric_swotinsky_tests;
+ ```
+ CREATE DATABASE eric_swotinsky_tests;
  ```
 
- ```USE eric_swotinsky_tests;
+ ```
+ USE eric_swotinsky_tests;
  ```
 
- ```CREATE table stylists (id serial PRIMARY KEY, name VARCHAR(255));
+
+ ```
+ CREATE table stylists (id serial PRIMARY KEY, name VARCHAR(255));
  ```
  
- ```CREATE table specialties (id serial PRIMARY KEY, name VARCHAR(255));
+ ```
+ CREATE table specialties (id serial PRIMARY KEY, name VARCHAR(255));
  ```
 
- ```CREATE table clients (id serial PRIMARY KEY, name VARCHAR(255), stylist_id INT);
+ ```
+ CREATE table clients (id serial PRIMARY KEY, name VARCHAR(255), stylist_id INT);
  ```
  
- ```CREATE table stylists_specialties (id serial PRIMARY KEY, stylist_id INT, specialty_id INT);
+ ```
+ CREATE table stylists_specialties (id serial PRIMARY KEY, stylist_id INT, specialty_id INT);
  ```
 
 
