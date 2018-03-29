@@ -98,7 +98,6 @@ If you encounter any bugs or would like to make suggestions regarding this proje
 
 **Known issues:**
 * It is possible to add duplicate Stylist-Specialty associations.
-* Adding new Stylist-Specialty associations may result in that stylist's clients being dropped from the database.
 
 ### License
 
