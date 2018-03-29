@@ -18,7 +18,7 @@
           <ul class="list-group">
             @foreach (var client in Model.GetClients())
             {
-              <li class="list-group-item"><a href="/client/@client.GetId()">@client.GetName()</a><form class="delete-one" action="/client/delete/@client.GetId()/@Model.GetId()" method="post"><button type="submit" class="btn btn-warning">Delete</button></li>
+              <li class="list-group-item"><a href="/client/@client.GetId()">@client.GetName()</a><form class="delete-one" action="/client/delete/@client.GetId()/@Model.GetId()" method="post"><button type="submit" class="btn btn-warning">Delete</button></form></li>
             }
           </ul>
       }
